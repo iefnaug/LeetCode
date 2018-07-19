@@ -67,6 +67,26 @@ public class RemoveDuplicates {
         }
     }
 
+    /**
+     * Solution2: 双指针法， 更好的做法
+     * @param nums
+     * @return
+     */
+    int removeDuplicates2(int []nums){
+        if(nums.length == 0){
+            return 0;
+        }
+
+        int i=0;
+        for(int j=1; j<nums.length; j++){
+            if(nums[j] != nums[i]){
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+        return i+1;
+    }
+
     public static void main(String[] args) {
         int []nums = {1,1,2,3,3,4,4,4,5,6,6,6,6,7,8,8,8,8,9,9,9};
 //        int []nums = {1,1};
