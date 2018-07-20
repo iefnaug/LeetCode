@@ -37,6 +37,11 @@ public class MaxProfit1 {
      * @return
      */
     static int maxProfit2(int []price){
+
+        if(price.length < 2){
+            return 0;
+        }
+
         //1.计算股票走势
         int []trend = new int[price.length - 1];
         for(int i=0; i<price.length-1; i++){
