@@ -34,9 +34,15 @@ package com.gf.primary.array;
     解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
  */
 
-public class MaxProfit {
+public class MaxProfit2 {
 
     int maxProfit(int []price){
+        if(price.length < 2){
+            throw new RuntimeException("无法获取利润");
+        }
+        for(int i=0; i<price.length; i++){
+
+        }
         return 0;
     }
 }
