@@ -34,15 +34,72 @@ package com.gf.primary.array;
     解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
  */
 
+import java.util.Random;
+
 public class MaxProfit2 {
 
-    int maxProfit(int []price){
-        if(price.length < 2){
-            throw new RuntimeException("无法获取利润");
-        }
-        for(int i=0; i<price.length; i++){
+    /**
+     * 计算股票走势，只要是上涨就卖出
+     * @param price
+     * @return
+     */
+    static int maxProfit(int []price){
 
+        if(price.length < 2){
+            return 0;
         }
-        return 0;
+
+        //1.计算股票走势
+        int []trend = new int[price.length - 1];
+        for(int i=0; i<price.length-1; i++){
+            trend[i] = price[i+1] - price[i];
+        }
+
+        //2.只要股票走势为上涨则卖出
+        int max = 0;
+        for(int j=0; j<trend.length; j++){
+            if(trend[j] > 0){
+                max += trend[j];
+            }
+        }
+
+        return max;
+    }
+
+
+    public static int maxProfit2(int  []price){
+        if(price.length < 2){
+            return 0;
+        }
+        int max = 0;
+        for(int i=0; i<price.length-1; i++){
+            int trend = price[i+1] - price[i];
+            if(trend > 0){
+                max += trend;
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        int []price = new int[10000];
+
+        Random random = new Random();
+        for(int i=0; i<10000; i++){
+            price[i] = random.nextInt(10000) - 5000;
+        }
+
+        long start = System.currentTimeMillis();
+        int profit = maxProfit(price);
+        long end = System.currentTimeMillis();
+        System.out.println("最大利润:" + profit);
+        System.out.println("耗费时间:" + (end - start));
+
+
+        start = System.currentTimeMillis();
+        profit = maxProfit2(price);
+        end = System.currentTimeMillis();
+        System.out.println("最大利润:" + profit);
+        System.out.println("耗费时间:" + (end - start));
     }
 }
