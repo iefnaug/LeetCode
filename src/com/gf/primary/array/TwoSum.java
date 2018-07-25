@@ -25,33 +25,17 @@ public class TwoSum {
 
     public static int [] twoSum(int []nums, int target){
         Map<Integer, Integer> map = new HashMap<>();
-        boolean flag = false;
-        if(target % 2 == 0){
-            flag = true;
-        }
         int []result = new int[2];
         for(int i=0; i<nums.length; i++){
-            if(map.containsKey(nums[i])){
-                if(flag && nums[i] == target/2){
-                    result[0] = map.get(nums[i]);
-                    result[1] = i;
-                    return result;
-                }
+            int search = target - nums[i];
+            if(map.containsKey(search)){
+                result[0] = map.get(search);
+                result[1] = i;
+                return result;
             }else{
                 map.put(nums[i], i);
             }
         }
-        for(int i=0; i<nums.length; i++){
-            Integer search = target - nums[i];
-            if(map.containsKey(search)){
-                if(flag && search == target/2)
-                    continue;
-                result[0] = i;
-                result[1] = map.get(search);
-                return result;
-            }
-        }
-
         return result;
     }
 
@@ -59,8 +43,9 @@ public class TwoSum {
 //        int []nums = {
 //                2, 7, 11, 15, 16, 11
 //        };
-        int nums[] = {3,2,4};
-        int []result = twoSum(nums, 6);
+//        int nums[] = {3,2,4};
+        int nums[] = {-1, -2, -3, -4, -5};
+        int []result = twoSum(nums, -8);
         for(Integer item : result){
             System.out.print(item + ",");
         }
