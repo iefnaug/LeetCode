@@ -77,21 +77,63 @@ public class PreorderTraversal {
      * @param root
      * @return
      */
-    public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        if(root == null) return list;
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()){
-            TreeNode node = stack.pop();
-            list.add(node.val);
-            if(node.right != null)
-                stack.push(node.right);
-            if(node.left != null)
-                stack.push(node.left);
-        }
-        return list;
-    }
+//    public List<Integer> preorderTraversal(TreeNode root) {
+//        List<Integer> list = new ArrayList<>();
+//        if(root == null) return list;
+//        Stack<TreeNode> stack = new Stack<>();
+//        stack.push(root);
+//        while (!stack.isEmpty()){
+//            TreeNode node = stack.pop();
+//            list.add(node.val);
+//            if(node.right != null)
+//                stack.push(node.right);
+//            if(node.left != null)
+//                stack.push(node.left);
+//        }
+//        return list;
+//    }
+
+    /**
+     * iterative version
+     *
+     *Submission Detail
+     * 68 / 68 test cases passed.
+     * Status: Accepted
+     * Runtime: 0 ms
+     * Submitted: 0 minutes ago
+     * beats 100.00 %
+     *
+     * @param root
+     * @return
+     */
+//    public List<Integer> preorderTraversal(TreeNode root) {
+//        List<Integer> list = new ArrayList<>();
+//        if(root == null) return list;
+//
+//        TreeNode cur = root;
+//        while(cur != null){
+//            list.add(cur.val);
+//            if(cur.left == null){
+//                cur = cur.right;
+//            }else{
+//                TreeNode node = cur.left;
+//                while(node.right != null && node.right != cur){
+//                    node = node.right;
+//                }
+//                if(node.right == null){
+//                    node.right = cur.right;
+//                    cur = cur.left;
+//                }else{
+//                    node.right = null;
+//                    cur = cur.right;
+//                }
+//            }
+//        }
+//        return list;
+//    }
+
+
+
 
 
 
